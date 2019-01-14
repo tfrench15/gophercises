@@ -8,5 +8,11 @@ import "net/http"
 // If the path is not provided in the map, then the fallback
 // http.Handler will be called instead.
 func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.HandlerFunc {
-	return nil
+	return func(w http.ResponseWriter, r *http.Request) {
+		path := pathsToUrls[r.URL.Path]
+		if path == "" {
+			fallback.ServeHTTP(w, r)
+		}
+		http.Redirect(w, r, path, http.StatusFound)
+	}
 }
