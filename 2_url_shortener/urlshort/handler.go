@@ -34,7 +34,7 @@ func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.Handl
 //
 // The only errors that can be returned all related to having
 // invalid YAML data.
-func YamlHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
+func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
 	m := make(map[string]string)
 	err := yaml.Unmarshal(yml, m)
 	if err != nil {

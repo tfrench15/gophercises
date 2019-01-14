@@ -23,7 +23,7 @@ func main() {
 	- path: /urlshort-final
 	  url: https://github.com/gophercises/urlshort/tree/solution
 	`
-	ymlHandler, err := urlshort.YamlHandler(yaml, mapHandler)
+	ymlHandler, err := urlshort.YAMLHandler(yaml, mapHandler)
 	if err != nil {
 		panic(err)
 	}
