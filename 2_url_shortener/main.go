@@ -15,6 +15,7 @@ func main() {
 		"/urlshort-godoc": "https://godoc.org/github.com/gophercises/urlshort",
 		"/yaml-godoc":     "https://godoc.org/gopkg.in/yaml.v2",
 	}
+
 	mapHandler := urlshort.MapHandler(pathsToUrls, mux)
 
 	yaml := `
@@ -23,9 +24,9 @@ func main() {
 	- path: /urlshort-final
 	  url: https://github.com/gophercises/urlshort/tree/solution
 	`
-	ymlHandler, err := urlshort.YAMLHandler(yaml, mapHandler)
+	ymlHandler, err := urlshort.YAMLHandler([]byte(yaml), mapHandler)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
 	fmt.Println("Starting the server on :8000")
