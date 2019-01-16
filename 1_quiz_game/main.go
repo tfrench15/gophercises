@@ -9,13 +9,11 @@ import (
 
 func main() {
 	f, err := openFile()
-	if err != nil {
-		panic(err)
-	}
+	check(err)
+
 	data, err := readFile(f)
-	if err != nil {
-		panic(err)
-	}
+	check(err)
+
 	quiz := createProblems(data)
 	playGame(quiz)
 }
@@ -63,4 +61,10 @@ func playGame(quiz []problem) {
 		continue
 	}
 	fmt.Printf("End of Quiz. Scored %d out of %d\n", correct, len(quiz))
+}
+
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
