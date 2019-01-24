@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+	"os"
 )
 
 func main() {
@@ -16,4 +18,13 @@ func main() {
 	}
 	ch := s["sean-kelly"]
 	fmt.Println(ch)
+
+	tmpl := placeholder()
+	err = tmpl.Execute(os.Stdout, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	srv := new()
+	http.ListenAndServe(":7000", srv)
 }

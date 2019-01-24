@@ -1,17 +1,16 @@
 package main
 
 import (
-	"html/template"
+	"fmt"
 	"net/http"
 )
 
-// Adventure contains the HTML templates and logic governing the
-// story.
-type Adventure struct {
-	tmpl template.Template
+type server struct{}
+
+func new() *server {
+	return &server{}
 }
 
-// ServeHTTP implements the HTTP Handler interface.
-func (a *Adventure) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// TODO...
+func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, world!")
 }
